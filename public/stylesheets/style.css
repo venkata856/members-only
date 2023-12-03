@@ -1,0 +1,61 @@
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+a {
+  color: #00B7FF;
+}
+
+.all-message-container{
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+  gap:6px;
+}
+
+.message-container{
+  
+  background-color: aliceblue;
+  border:1px solid rgb(116, 189, 245);
+  padding:6px;
+  border-radius: 6px;
+}
+
+.message-container-text{
+  display:flex;
+  justify-content: space-between;
+
+}
+
+.delete-message{
+  justify-self: flex-end;
+}
+
+.message-text{
+
+  font-size: 15px;
+  font-weight: 600;
+  padding-left: 6px;
+}
+
+.message-owner{
+    font-size: 8px;
+    font-weight: 300;
+    text-align: end;
+    padding-right: 6px;
+    color:rgb(255, 89, 0);
+    padding-top:6px;
+}
+
+.flexed-ed{
+  display:flex;
+  justify-content: space-between;
+  gap:60px;
+}
+
+.flexed-ed-bg {
+  display: flex;
+  justify-content: space-between;
+  gap: 1000px;
+}

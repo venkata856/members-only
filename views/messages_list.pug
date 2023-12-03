@@ -1,0 +1,47 @@
+
+extends layout1
+block content1
+    nav(class='navbar navbar-expand-lg navbar-dark bg-dark flexed-ed-bg')
+          a(class='navbar-brand' href='/') Message Board
+          div(class='collapse navbar-collapse' id='navbarNav')
+            ul(class='navbar-nav d-flex justify-content-between flexed-ed ')
+                if !user
+                    button(type='button' class='btn btn-primary btn-lg')
+                        a(class='nav-link' href='/user/login') login
+                            span(class='sr-only')
+                    button(type='button' class='btn btn-primary btn-lg')
+                        a(class='nav-link' href='/user/register') register
+                            span(class='sr-only')
+                else 
+                    button(type='button' class='btn btn-primary btn-lg')
+                        a(class='nav-link' href='/user/logout') logout
+                            span(class='sr-only')
+
+block content
+    h1= title
+    
+    div.all-message-container
+     each mes in messages
+      div.message-container
+        div.message-container-text 
+            div.message-text #{mes.message}
+            if user && user.isAdmin
+                form(method='POST' action='/messages/delete' class='delete-message')
+                    div.form-group
+                        input#brandid.form-control(type='hidden',name='messageid', required='true', value=mes._id )
+                    button.btn.btn-primary.btn-sm(type='submit') Delete
+        if user
+            div.message-owner #{mes.user.username}
+        else 
+            div.message-owner please login to see the message owner
+    if user
+        form(method='POST' action='')
+            div.form-group
+                label(for='message') message:
+                input#message.form-control(type='text', placeholder='message' name='message' required='true' value='' )
+            button.btn.btn-primary(type='submit') Submit
+
+    if errors
+      ul
+       for error in errors
+         li!= error.msg

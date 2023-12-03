@@ -1,0 +1,24 @@
+extends layout
+
+block content
+  h1= title
+
+  form(method='POST' action='')
+    div.form-group
+      label(for='firstname') First Name:
+      input#firstname.form-control(type='text', placeholder='first name' name='firstname' required='true' value=(undefined===user ? '' : user.firstName) )
+    div.form-group
+      label(for='lastname') Last Name:
+      input#lastname.form-control(type='text', placeholder='last name' name='lastname' required='true' value=(undefined===user ? '' : user.lastName) )
+    div.form-group
+      label(for='username') Username:
+      input#username.form-control(type='text', placeholder='username' name='username' required='true' value =(undefined===user ? '' : user.username)) 
+    div.form-group
+      label(for='password') Password:
+      input#quantity.form-control(type='password', placeholder='password' name='password' value=(undefined===user ? '' : user.password) required='true')
+    button.btn.btn-primary(type='submit') Submit
+
+  if errors
+    ul
+      for error in errors
+        li!= error.msg
